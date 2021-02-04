@@ -6,6 +6,7 @@ from flask_principal import RoleNeed, ActionNeed, Permission, \
 
 from werkzeug.urls import url_parse
 
+
 from utils.forms import LoginForm, MeetForm, PatientForm, RegistrationForm
 from utils.models import Patient, Doctor, Meet, today, get_name, generate_export, import_from_csv
 from utils.stats import get_week_stats, get_meets_for_every_doc
