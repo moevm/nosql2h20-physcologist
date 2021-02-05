@@ -1,0 +1,94 @@
+table, th, td {
+  border: 1px solid black;
+}
+
+#contract {
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}
+
+#meets .notes{
+  cursor: pointer;
+}
+
+#meets td.notes:hover{
+  background-color: #dedde2;
+  color: #000000;
+}
+
+#patients .diagnosis{
+  cursor: pointer
+}
+
+#patients td.diagnosis:hover{
+  background-color: #dedde2;
+  color: #000000;
+}
+
+#patients .symptoms{
+  cursor: pointer
+}
+
+#patients td.symptoms:hover{
+  background-color: #dedde2;
+  color: #000000;
+}
+
+.week_stats{
+  text-align: center;
+  font-size: xx-large;
+  border: 2px solid #6f6f6f;
+}
+
+.week_stats{
+  width: 70%;
+  margin: 0 auto;
+}
+
+.week_stats img{
+  margin: 0 auto;
+  width: 85%;
+}
+
+div.export{
+  border: 2px solid #6f6f6f;
+  cursor: pointer;
+  display: inline-block;
+  width: 100px;
+  height: 50px;
+
+  text-align: center;
+}
+
+div.import{
+  border: 2px solid #6f6f6f;
+  cursor: pointer;
+  display: inline-block;
+  width: 100px;
+  height: 50px;
+
+  text-align: center;
+}
+
+div.export *{
+  cursor: pointer;
+}
+
+div.import *{
+  cursor: pointer;
+}
+
+div.today_stats{
+  margin: 0 auto;
+  width: 300px;
+}
+
+.num{
+  font-weight: bold;
+  font-size: xx-large;
+}

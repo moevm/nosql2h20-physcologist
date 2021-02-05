@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <input id="date" name="date" type="date" value="{{ date }}" onchange="refresh_table()" form="create_meet">
+
+    <table style="width:100%" id="meets">
+      <tr>
+          <th>Время</th>
+          <th>Пациент</th>
+          <th>Заметки</th>
+      </tr>
+        {% for meet in meets %}
+            <tr id="{{ meet['meet_id'] }}">
+                <td>{{ meet['meet_time'] }}</td>
+                <td>{{ meet['patient'] }}</td>
+                <td class="notes">{{ meet['notes'] }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <div id="notes_div" style="display:none">
+        <label for="edit_notes">Введите заметки: </label> <br>
+        <textarea id="edit_notes"></textarea>
+        <input type="button" value="Сохранить" id="save_notes" onclick="update_notes()">
+    </div>
+
+    <form id="create_meet" action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+            {{ form.time.label }}
+            {{ form.time(size=16, type='time') }}
+            {{ form.patient.label }}
+            {{ form.patient(size=1) }}
+        {{ form.submit_meet() }}
+        <div id="errors">
+
+        <div id="time_errors" style="display:inline-block"></div>
+        <div id="patient_errors" style="display:inline-block"></div>
+
+        </div>
+    </form>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+     <script src='{{ url_for('static', filename='js/meet.js') }}'></script>
+{% endblock %}

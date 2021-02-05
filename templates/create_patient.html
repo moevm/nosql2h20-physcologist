@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Добавить пацента</h1>
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.contract_code.label }}<br>
+            {{ form.contract_code(size=32) }}
+            {% for error in form.contract_code.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.name.label }}<br>
+            {{ form.name(size=32) }}
+            {% for error in form.name.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.surname.label }}<br>
+            {{ form.surname(size=32) }}
+            {% for error in form.surname.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.middle_name.label }}<br>
+            {{ form.middle_name(size=32) }}
+            {% for error in form.middle_name.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.birth_date.label }}<br>
+            {{ form.birth_date(size=32, type='date') }}
+            {% for error in form.birth_date.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.is_male.label }}<br>
+            {{ form.is_male(size=1) }}
+            {% for error in form.is_male.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.symptoms.label }}<br>
+            {{ form.symptoms(size=32) }}
+            {% for error in form.symptoms.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.diagnosis.label }}<br>
+            {{ form.diagnosis(size=32) }}
+            {% for error in form.diagnosis.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>{{ form.submit() }}</p>
+    </form>
+
+    {% with errors = get_flashed_messages() %}
+    {% if errors %}
+        {% for error in errors %}
+            <p>{{ error }}</p>
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+     <script src='{{ url_for('static', filename='js/meet.js') }}'></script>
+
+{% endblock %}

@@ -1,0 +1,31 @@
+<html>
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/style.css') }}">
+    <head>
+        <title>Картотека и запись</title>
+    </head>
+    <body>
+        {% if current_user.is_anonymous %}
+            <div>
+                Картотека:
+                <a href={{ url_for('start_page') }}>Пациенты</a>
+                <a style="position:absolute;right:200px;" href={{url_for('login')}}>Login</a>
+                <a style="position:absolute;right:100px;" href={{url_for('register')}}>Register</a>
+            </div>
+        {% else %}
+            <div>
+                Картотека:
+                <a href={{ url_for('start_page') }}>Главная</a>
+                <span>Здравствуйте, {{ current_user.name + ' ' + current_user.middle_name}}!</span>
+                <a style="position:absolute;right:100px;" href={{ url_for('logout') }}>Logout</a>
+                {% if current_user.is_admin %}
+                    <a style="position:absolute;right:200px;" href={{ url_for('admin_page') }}>Admin Room</a>
+                {% endif %}
+                <a style="position:absolute;right:300px;" href={{ url_for('get_meets') }}>Приемы</a>
+                <a style="position:absolute;right:400px;" href={{ url_for('create_patient') }}>Добавить пациента</a>
+            </div>
+        {% endif %}
+
+        <hr>
+        {% block content %}{% endblock %}
+    </body>
+</html>
