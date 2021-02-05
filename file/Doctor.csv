@@ -1,0 +1,4 @@
+,_id,_labels,birth_date,contract_number,diagnosis,is_admin,is_male,login,meet_datetime,middle_name,name,notes,password,surname,symptoms,_start,_end,_type
+0,0.0,:Doctor,,,,,,login1,,Михайлович,Александр,,pbkdf2:sha256:150000$PK7a9NWz$9b1bbdf4c636659604675855214c9a5b5d16a0cd9f33f254eae5cf5ea3d94f57,Анисимов,,,,
+1,1.0,:Doctor,,,,,,login2,,Артурович,Дмитрий,,pbkdf2:sha256:150000$PK7a9NWz$9b1bbdf4c636659604675855214c9a5b5d16a0cd9f33f254eae5cf5ea3d94f57,Андреев,,,,
+2,2.0,:Doctor,,,,true,,admin,,Мирославович,Илья,,pbkdf2:sha256:150000$Q65MlI4C$e3c6e0e673efc023679633a947d6e422acafb6b7546019ab72916926f76cf2d4,Захаров,,,,
