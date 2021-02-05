@@ -1,0 +1,6 @@
+,_id,_labels,birth_date,contract_number,diagnosis,is_admin,is_male,login,meet_datetime,middle_name,name,notes,password,surname,symptoms,_start,_end,_type
+3,3.0,:Patient,1999-07-14,001,Депрессия,,true,,,Степановна,Маргарита,,,Баранова,Усталость,,,
+4,4.0,:Patient,1999-07-14,002,,,true,,,Николаевич,Андрей,,,Григорьев,,,,
+5,5.0,:Patient,1999-07-14,003,,,true,,,Даниилович,Иван,,,Емельянов,,,,
+6,6.0,:Patient,1999-07-14,004,,,true,,,Леонидович,Фёдор,,,Захаров,,,,
+7,7.0,:Patient,1999-07-14,005,,,true,,,Артемьевич,Максим,,,Иванов,,,,
