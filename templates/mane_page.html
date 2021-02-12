@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <input type="text" id="contract" onkeyup="myFunction()" placeholder="Поиск по номеру договора" title="Напишите договор">
+
+    <table style="width:100%" id="patients">
+      <tr>
+          <th>Договор</th>
+          <th>Имя</th>
+          <th>Фамилия</th>
+          <th>Отчество</th>
+          <th>Дата рождения</th>
+          <th>Пол</th>
+          <th>Симптомы</th>
+          <th>Диагноз</th>
+      </tr>
+        {% for patient in patients %}
+            <tr id="{{ patient.id }}">
+                <td>{{ patient.contract_number }}</td>
+                <td>{{ patient.name }}</td>
+                <td>{{ patient.surname }}</td>
+                <td>{{ patient.middle_name }}</td>
+                <td>{{ patient.birth_date }}</td>
+                {% if patient.is_male %}
+                    <td>Мужчина</td>
+                {% else %}
+                    <td>Женщина</td>
+                {% endif %}
+                <td class="symptoms">{{ patient.symptoms }}</td>
+                <td class="diagnosis">{{ patient.diagnosis }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <div id="diagnosis_div" style="display:none">
+        <label for="edit_notes">Введите диагноз: </label> <br>
+        <textarea id="edit_diagnosis"></textarea>
+        <input type="button" value="Сохранить" id="save_diagnosis" onclick="update_diagnosis()">
+    </div>
+
+    <div id="symptoms_div" style="display:none">
+        <label for="edit_notes">Введите симптомы: </label> <br>
+        <textarea id="edit_symptoms"></textarea>
+        <input type="button" value="Сохранить" id="save_symptoms" onclick="update_symptoms()">
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+     <script src='{{ url_for('static', filename='js/patients.js') }}'></script>
+    <script>
+    function myFunction() {
+      var input, filter, table, tr, td, i, txtValue;
+      input = document.getElementById("contract");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("patients");
+      tr = table.getElementsByTagName("tr");
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[0];
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+    }
+    </script>
+{% endblock %}

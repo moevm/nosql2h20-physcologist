@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="cont1">
+        <div class="today_stats">
+            <div class="today">
+                Запланировано встреч на сегодня <span class="num">{{ meets_today}}</span>
+            </div>
+            <div class="files">
+                <div class="export">
+                    <label for="export_button" class="btn">Export</label>
+                    <button id="export_button" style="visibility:hidden;">Экспорт</button>
+                </div>
+                <div class="import">
+                    <label for="import_file" class="btn">Import</label>
+                    <input id="import_file" type="file" style="visibility:hidden;">
+                </div>
+            </div>
+        </div>
+        <div class="week_stats">
+            <p>Статистика встреч на неделе</p>
+            <img src='{{ meets_in_week }}' alt="Статистика за неделю">
+        </div>
+        <div class="week_stats">
+            <p>Статистика встреч для каждого врача</p>
+            <img src='{{ every_doc_meets }}' alt="Статистика встреч для каждого врача">
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <hr>
+    <hr>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script>
+                $('#export_button').click(function (e) {
+            const a = document.createElement('a');
+            a.style.display = 'none';
+            a.href = '/uploads/db.csv';
+            // the filename you want
+            a.download = 'db.csv';
+            document.body.appendChild(a);
+            a.click();
+        })
+
+        $('#import_file').change(function () {
+            var form_data = new FormData();
+            form_data.append('file', $(this).prop('files')[0])
+
+            $.ajax({
+                type: "post",
+                url: '/import_db',
+                data: form_data,
+                contentType: false,
+                cache: false,
+                processData: false,
+                success: function(data) {
+                    $('.files').append('<p style="font-size: 7px">Импорт успешно совершен!!!</p>')
+                },
+            });
+        })
+
+    </script>
+{% endblock %}
